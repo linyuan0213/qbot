@@ -1,0 +1,11 @@
+qbittorrent:
+  host: 'http://127.0.0.1:8080'
+  username: 'admin'
+  passwd: 'adminadmin'
+  save_path: '/downloads'
+  category: 'telegram'
+
+telegram:
+  token: '1234567:xxx'
+  workers: 1 # number of python-telegram-bot workers.
+  timeout: 120 # requests timeout in seconds
