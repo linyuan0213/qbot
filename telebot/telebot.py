@@ -4,23 +4,16 @@ import re
 import importlib
 from pathlib import Path
 
-from yaml.tokens import Token
-
-from config import config
-
-from telegram import Update, ForceReply
-from telegram.ext import Updater, ConversationHandler, CommandHandler, MessageHandler, Filters, CallbackContext
-from telegram import InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import InlineQueryHandler
+from telegram.ext import Updater, ConversationHandler
 
 logger = logging.getLogger(__name__)
 
+
 class TeleBot(Updater):
-        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.bot_commands = []
-       
+
     def init(self, *args, **kwargs) -> None:
 
         # Start the Bot
@@ -100,11 +93,13 @@ class TeleBot(Updater):
             logger.debug('importing module: %s', import_path)
             importlib.import_module(import_path)
 
-
     def add_handler(self, *args, bot_command=None, **kwargs):
         if isinstance(args[0], ConversationHandler):
-            # ConverstaionHandler.name or the name of the first entry_point function
-            logger.info('adding conversation handler: %s', args[0].name or args[0].entry_points[0].callback.__name__)
+            # ConverstaionHandler.name
+            # or the name of the first entry_point function
+            logger.info('adding conversation handler: %s',
+                        args[0].name or
+                        args[0].entry_points[0].callback.__name__)
         else:
             logger.info('adding handler: %s', args[0].callback.__name__)
 

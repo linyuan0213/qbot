@@ -4,6 +4,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
+
 class Config:
 
     def __init__(self) -> None:
@@ -14,7 +15,7 @@ class Config:
             raise ValueError
 
         self.config_file = QB_CONF
-    
+
     def get_conf(self):
 
         try:
@@ -23,7 +24,8 @@ class Config:
         except FileNotFoundError:
             logger.debug('Config file <%s> not found', os.path.normpath(self.config_file))
             return
-        
+
         return config
+
 
 conf = Config()
