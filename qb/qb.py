@@ -27,14 +27,14 @@ class QClient:
         torrent_list = list()
         for torrent in torrents:
             if torrent.state_enum.is_downloading:
-                torrent_list.add(torrent)
+                torrent_list.append(torrent)
 
     def get_completed_torrents(self):
         torrents = self.get_all_torrents()
         torrent_list = list()
         for torrent in torrents:
             if torrent.state_enum.is_complete:
-                torrent_list.add(torrent)
+                torrent_list.append(torrent)
         return torrent_list
 
     def get_paused_torrents(self):
@@ -42,7 +42,7 @@ class QClient:
         torrent_list = list()
         for torrent in torrents:
             if torrent.state_enum.is_paused:
-                torrent_list.add(torrent)
+                torrent_list.append(torrent)
         return torrent_list
 
     def add_link(self, link, save_path=None, category=None, is_paused=True):
