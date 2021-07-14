@@ -15,5 +15,5 @@ def on_help(update: Update, context: CallbackContext):
     update.message.reply_html('Help')
 
 
-updater.add_handler(CommandHandler('help', on_help), bot_command=BotCommand("help", "帮助"))
+updater.add_handler(CommandHandler('help', on_help), bot_command=BotCommand("help", "帮助!"))
 updater.add_handler(MessageHandler(Filters.regex(r'^\/help$'), on_help))

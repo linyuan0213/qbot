@@ -11,4 +11,5 @@ if __name__ == '__main__':
 
     updater.import_handlers(r'telebot/component')
 
+    updater.set_bot_commands()
     updater.init(drop_pending_updates=True)

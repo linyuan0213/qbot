@@ -5,6 +5,7 @@ import importlib
 from pathlib import Path
 
 from telegram.ext import Updater, ConversationHandler
+from telegram import BotCommand
 
 logger = logging.getLogger(__name__)
 
@@ -92,6 +93,15 @@ class TeleBot(Updater):
         for import_path in paths_to_import:
             logger.debug('importing module: %s', import_path)
             importlib.import_module(import_path)
+
+    def set_bot_commands(self):
+        
+        new_list = []
+
+        new_list.extend(self.bot_commands)
+        self.bot_commands = new_list
+
+        self.bot.set_my_commands(self.bot_commands)
 
     def add_handler(self, *args, bot_command=None, **kwargs):
         if isinstance(args[0], ConversationHandler):
