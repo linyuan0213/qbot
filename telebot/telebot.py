@@ -5,7 +5,6 @@ import importlib
 from pathlib import Path
 
 from telegram.ext import Updater, ConversationHandler
-from telegram import BotCommand
 
 logger = logging.getLogger(__name__)
 
