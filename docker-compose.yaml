@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  qbot:
+    image: ghcr.io/linyuan0213/qbot:latest
+    container_name: qbot
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Asia/Shanghai
+      - QB_CONF=/etc/qbot/config.yaml
+    volumes:
+      - /share/config/qbot:/etc/qbot
+    restart: unless-stopped
