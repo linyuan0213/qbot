@@ -94,7 +94,7 @@ class TeleBot(Updater):
             importlib.import_module(import_path)
 
     def set_bot_commands(self):
-        
+
         new_list = []
 
         new_list.extend(self.bot_commands)

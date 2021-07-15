@@ -11,9 +11,9 @@ logger = logging.getLogger(__name__)
 SHOW_MESSAGE = """<b>使用</b>:
 • /help: 帮助
 • /list: 展示所有任务
-• /completed: 展示已完成的任务 
-• /downloading: 展示正在下载的任务 
-• /paused: 展示已暂停的任务 
+• /completed: 展示已完成的任务
+• /downloading: 展示正在下载的任务
+• /paused: 展示已暂停的任务
 • /pauseall: 暂停所有任务
 • /resumeall: 启动所有任务
 • 将链接或者文件发送到 Bot 以添加任务

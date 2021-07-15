@@ -62,7 +62,7 @@ class QClient:
                                             save_path=save_path,
                                             category=category,
                                             is_paused=is_paused,
-                                            use_auto_torrent_management=False) 
+                                            use_auto_torrent_management=False)
         except FileNotFoundError:
             logger.debug('Torrent file not found')
             return

@@ -19,6 +19,9 @@ def download_from_magnet(update: Update, context: CallbackContext):
     save_path = conf.get_conf()['qbittorrent']['save_path']
     category = conf.get_conf()['qbittorrent']['category']
 
+    logger.debug('save_path: %s', save_path)
+    logger.debug('category: %s', category)
+
     magnet = update.message.text
 
     res = qclient.add_link(link=magnet, save_path=save_path, category=category, is_paused=False)
