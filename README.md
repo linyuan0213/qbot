@@ -1,4 +1,6 @@
 # QBot   <img src="https://img.shields.io/docker/automated/linyuan0213/qbot?style=plastic" alt="https://img.shields.io/docker/automated/linyuan0213/qbot?style=plastic"  />
+<img src="https://minio.xcreal.site:443/blog//2021/7/15/logo.png" alt="logo" style="zoom: 25%;" />
+
 使用 QBot 可以通过 Telegram Bot 轻松下载和管理 Qbittorrent，通过发送文件或者链接即可下载对应资源
 
 手动安装
