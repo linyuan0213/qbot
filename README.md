@@ -1,4 +1,4 @@
-# QBot   <img src="https://img.shields.io/docker/automated/linyuan0213/qbot?style=plastic" alt="https://img.shields.io/docker/automated/linyuan0213/qbot?style=plastic"  />
+# QBot  ![build](https://github.com/linyuan0213/qbot/actions/workflows/docker-image.yml/badge.svg)
 <div align=center><img src="https://minio.xcreal.site:443/blog//2021/7/15/logo_transparent.png" alt="logo_transparent" width="300" height="300" alien /></div>
 
 使用 QBot 可以通过 Telegram Bot 轻松下载和管理 Qbittorrent，通过发送文件或者链接即可下载对应资源
@@ -33,3 +33,6 @@ python app.py
 docker run -e "QB_CONF=/etc/qbot/config.yaml" -v /path/to/config.yaml:/etc/qbot/config.yaml --name qbot linyuan0213/qbot:latest
 ```
 
+### 通过 docker-compose 安装
+
+编辑 **docker-compose.yaml** 文件，然后再执行 **docker-compose up -d** 
