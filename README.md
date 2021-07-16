@@ -1,4 +1,6 @@
-# QBot  ![build](https://github.com/linyuan0213/qbot/actions/workflows/docker-image.yml/badge.svg) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5afff3181e724a2bb3f347345b26c2f2)](https://www.codacy.com/gh/linyuan0213/qbot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=linyuan0213/qbot&amp;utm_campaign=Badge_Grade)
+# QBot  ![build](https://github.com/linyuan0213/qbot/actions/workflows/docker-image.yml/badge.svg)   [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d770ff883e94d5190f3ff57c7f29c8e)](https://app.codacy.com/gh/linyuan0213/qbot?utm_source=github.com&utm_medium=referral&utm_content=linyuan0213/qbot&utm_campaign=Badge_Grade_Settings)
+
+>>>>>>> Add Codacy badge
 <div align=center><img src="https://minio.xcreal.site:443/blog//2021/7/15/logo_transparent.png" alt="logo_transparent" width="300" height="300" alien /></div>
 
 使用 QBot 可以通过 Telegram Bot 轻松下载和管理 Qbittorrent，通过发送文件或者链接即可下载对应资源
