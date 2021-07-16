@@ -112,4 +112,4 @@ updater.add_handler(CommandHandler('downloading', list_downloading_torrents),
 updater.add_handler(CommandHandler('paused', list_paused_torrents),
                     bot_command=BotCommand("paused", "展示已暂停的torrent"))
 updater.add_handler(CommandHandler('completed', list_completed_torrents),
-                    bot_command=BotCommand("paused", "展示已完成的torrent"))
+                    bot_command=BotCommand("completed", "展示已完成的torrent"))

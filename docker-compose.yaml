@@ -10,5 +10,5 @@ services:
       - TZ=Asia/Shanghai
       - QB_CONF=/etc/qbot/config.yaml
     volumes:
-      - /share/config/qbot:/etc/qbot
+      - /path/to/qbot:/etc/qbot
     restart: unless-stopped
