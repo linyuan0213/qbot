@@ -3,8 +3,6 @@
 
 使用 QBot 可以通过 Telegram Bot 轻松下载和管理 Qbittorrent，通过发送文件或者链接即可下载对应资源
 
-手动安装
-
 ### 安装
 
 为了使用 Qbot 需要安装相关依赖，并且启用 QBittorrent web UI，只支持python3
