@@ -74,7 +74,7 @@ def unset_notify(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(text)
 
 
-updater.add_handler(CommandHandler('startnotify', set_notify_timer), 
+updater.add_handler(CommandHandler('startnotify', set_notify_timer),
                     bot_command=BotCommand("startnotify", "开启下载完成提醒"))
-updater.add_handler(CommandHandler('stopnotify', unset_notify), 
+updater.add_handler(CommandHandler('stopnotify', unset_notify),
                     bot_command=BotCommand("stopnotify", "关闭下载完成提醒"))
