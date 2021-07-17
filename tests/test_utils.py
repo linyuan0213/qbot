@@ -4,7 +4,7 @@ from utils import bytes
 def test_bytes():
     speed_b = 1023
     speed_b_ch = bytes.bytes_to_human(speed_b)
-    assert speed_b_ch == '1023.0B'
+    assert speed_b_ch == '1023B'
 
     speed_kb = 1024 * 1
     speed_kb_ch = bytes.bytes_to_human(speed_kb)
