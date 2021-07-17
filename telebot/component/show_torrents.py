@@ -5,6 +5,7 @@ from telegram.ext import CommandHandler, CallbackContext
 
 from telebot.updater import updater
 from telebot.qclient import qclient
+from utils.bytes import bytes_to_human
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +21,9 @@ def list_all_torrents(update: Update, context: CallbackContext):
     torrs_list = list()
 
     for torrent in torrs:
-        logger.info('%s: %s (%s)', torrent.hash[-6:], torrent.name, torrent.state)
-        torrs_list.append('{0}: {1} ({2})'.format(torrent.hash[-6:], torrent.name, torrent.state))
+        size = bytes_to_human(torrent.size)
+        logger.info('%s: %s (%s)', torrent.name, torrent.state, size)
+        torrs_list.append('{0}: {1} ({2})'.format(torrent.name, torrent.state, size))
 
     logger.info(torrs_list)
 
@@ -44,8 +46,11 @@ def list_downloading_torrents(update: Update, context: CallbackContext):
     torrs_list = list()
 
     for torrent in torrs:
-        logger.info('%s: %s (%s)', torrent.hash[-6:], torrent.name, torrent.state)
-        torrs_list.append('{0}: {1} ({2})'.format(torrent.hash[-6:], torrent.name, torrent.state))
+        speed = f'{bytes_to_human(torrent.dlspeed)}/s'
+        size = bytes_to_human(torrent.size)
+        progress = '%.2f%%' % (torrent.progress * 100)
+        logger.info('%s: %s %s %s (%s)', torrent.name, size, progress, torrent.state, speed)
+        torrs_list.append('{0}: {1} ({2} {3} {4})'.format(torrent.name, torrent.state, size, progress, speed))
 
     logger.info(torrs_list)
 
@@ -92,8 +97,9 @@ def list_completed_torrents(update: Update, context: CallbackContext):
     torrs_list = list()
 
     for torrent in torrs:
-        logger.info('%s: %s (%s)', torrent.hash[-6:], torrent.name, torrent.state)
-        torrs_list.append('{0}: {1} ({2})'.format(torrent.hash[-6:], torrent.name, torrent.state))
+        size = bytes_to_human(torrent.size)
+        logger.info('%s: %s %s (%s)', torrent.name, torrent.state, size)
+        torrs_list.append('{0}: {1} ({2})'.format(torrent.name, torrent.state, size))
 
     logger.info(torrs_list)
 
