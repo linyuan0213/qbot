@@ -32,6 +32,16 @@ class QClient:
 
         return torrent_list
 
+    def get_uploading_torrents(self):
+        torrents = self.get_all_torrents()
+        torrent_list = list()
+
+        for torrent in torrents:
+            if torrent.state_enum.is_uploading:
+                torrent_list.append(torrent)
+
+        return torrent_list
+
     def get_completed_torrents(self):
         torrents = self.get_all_torrents()
         torrent_list = list()

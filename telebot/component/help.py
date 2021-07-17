@@ -13,6 +13,7 @@ SHOW_MESSAGE = """<b>使用</b>:
 • /list: 展示所有任务
 • /completed: 展示已完成的任务
 • /downloading: 展示正在下载的任务
+• /uploading: 展示正在上传的任务
 • /paused: 展示已暂停的任务
 • /pauseall: 暂停所有任务
 • /resumeall: 启动所有任务

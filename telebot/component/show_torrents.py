@@ -62,6 +62,32 @@ def list_downloading_torrents(update: Update, context: CallbackContext):
     )
 
 
+def list_uploading_torrents(update: Update, context: CallbackContext):
+    logger.info('torrents list from %s', update.message.from_user.first_name)
+
+    torrs = qclient.get_uploading_torrents()
+    if not torrs:
+        update.message.reply_text('没有正在上传的torrent!')
+        return
+
+    torrs_list = list()
+
+    for torrent in torrs:
+        speed = f'{bytes_to_human(torrent.upspeed)}/s'
+        size = bytes_to_human(torrent.size)
+        logger.info('%s: %s %s (%s)', torrent.name, size, torrent.state, speed)
+        torrs_list.append('{0}: {1} ({2} {3})'.format(torrent.name, torrent.state, size, speed))
+
+    logger.info(torrs_list)
+
+    context.bot.send_message(
+        update.effective_chat.id,
+        '\n----------------------\n'.join(torrs_list),
+        parse_mode=ParseMode.HTML,
+        disable_web_page_preview=True
+    )
+
+
 def list_paused_torrents(update: Update, context: CallbackContext):
     logger.info('torrents list from %s', update.message.from_user.first_name)
 
@@ -115,6 +141,8 @@ updater.add_handler(CommandHandler('list', list_all_torrents),
                     bot_command=BotCommand("list", "展示所有的torrent"))
 updater.add_handler(CommandHandler('downloading', list_downloading_torrents),
                     bot_command=BotCommand("downloading", "展示正在下载的torrent"))
+updater.add_handler(CommandHandler('uploading', list_uploading_torrents),
+                    bot_command=BotCommand("uploading", "展示正在上传的torrent"))                    
 updater.add_handler(CommandHandler('paused', list_paused_torrents),
                     bot_command=BotCommand("paused", "展示已暂停的torrent"))
 updater.add_handler(CommandHandler('completed', list_completed_torrents),
