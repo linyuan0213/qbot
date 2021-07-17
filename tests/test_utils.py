@@ -1,4 +1,4 @@
-from utils import bytes
+from utils import bytes_utils
 
 
 def test_bytes():

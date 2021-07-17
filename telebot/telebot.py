@@ -55,8 +55,8 @@ class TeleBot(Updater):
         """A text file named "manifest" can be placed in the dir we are importing the handlers from.
         It can contain the list of the files to import, the bot will import only these
         modules as ordered in the manifest file.
-        Inline comments are allowed, they must start by #"""
-
+        Inline comments are allowed, they must start by #
+        """
         paths_to_import = list()
 
         manifest_modules = cls._load_manifest(os.path.join(directory, 'manifest'))

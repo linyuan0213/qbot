@@ -6,13 +6,13 @@ from telegram.ext import CommandHandler, CallbackContext
 
 from telebot.updater import updater
 from telebot.qclient import qclient
-from utils.bytes import bytes_to_human
+from utils.bytes_utils import bytes_to_human
 
 logger = logging.getLogger(__name__)
 
 
 def alarm(context: CallbackContext) -> None:
-    """发送提醒"""
+    """发送提醒."""
     job = context.job
 
     tds = qclient.get_downloading_torrents()
@@ -24,8 +24,8 @@ def alarm(context: CallbackContext) -> None:
     for torrent in tds:
 
         # 添加正在下载记录
-        cur.execute(f"INSERT OR IGNORE INTO torrent (id ,name) \
-            VALUES ('{torrent.hash}', '{torrent.name}')")
+        cur.execute("INSERT OR IGNORE INTO torrent (id ,name) \
+                    VALUES (?, ?)", (torrent.hash, torrent.name))
     conn.commit()
 
     tcs = qclient.get_completed_torrents()
@@ -34,12 +34,12 @@ def alarm(context: CallbackContext) -> None:
         for tc in tcs:
             if td[0] == tc.hash:
                 size = bytes_to_human(tc.size)
-                logger.info('%s: %s %s (%s)', tc.name, tc.state, size)
+                logger.info('%s: %s (%s)', tc.name, tc.state, size)
                 torrent_info = f'{tc.name} 下载完成!'
                 context.bot.send_message(job.context, text=torrent_info)
 
                 # 删除已下载完成记录
-                cur.execute(f"DELETE FROM torrent WHERE id = '{tc.hash}'")
+                cur.execute("DELETE FROM torrent WHERE id = ?", (tc.hash,))
                 conn.commit()
 
 
@@ -54,7 +54,7 @@ def remove_job_if_exists(name: str, context: CallbackContext) -> bool:
 
 
 def set_notify_timer(update: Update, context: CallbackContext) -> None:
-    """添加任务到队列"""
+    """添加任务到队列."""
     chat_id = update.message.chat_id
 
     job_removed = remove_job_if_exists(str(chat_id), context)
@@ -67,7 +67,7 @@ def set_notify_timer(update: Update, context: CallbackContext) -> None:
 
 
 def unset_notify(update: Update, context: CallbackContext) -> None:
-    """移除任务"""
+    """移除任务."""
     chat_id = update.message.chat_id
     job_removed = remove_job_if_exists(str(chat_id), context)
     text = '提醒已经关闭' if job_removed else '你没有开启提醒'
