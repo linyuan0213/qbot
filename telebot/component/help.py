@@ -18,7 +18,7 @@ SHOW_MESSAGE = """<b>使用</b>:
 • /pauseall: 暂停所有任务
 • /resumeall: 启动所有任务
 • /setpath: 设置下载路径 (不加参数获取当前路径), Usage: /setpath /download
-• /setcategory: 设置下载分类 (不加参数获取当前分类), Usage: /setcategory abc 
+• /setcategory: 设置下载分类 (不加参数获取当前分类), Usage: /setcategory abc
 • /reset: 重置下载路径和分类
 • 将链接或者文件发送到 Bot 以添加任务
 """
