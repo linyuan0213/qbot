@@ -9,6 +9,8 @@
 为了使用 Qbot 需要安装相关依赖，并且启用 QBittorrent web UI，只支持python3
 
 ```sh
+git clone git@github.com:linyuan0213/qbot.git
+cd qbot
 pip install -r requirements.txt
 ```
 
@@ -33,5 +35,8 @@ docker run -e "QB_CONF=/etc/qbot/config.yaml" -v /path/to/config.yaml:/etc/qbot/
 ```
 
 ### 通过 docker-compose 安装
-
+```sh
+git clone git@github.com:linyuan0213/qbot.git
+cd qbot
+```
 编辑 **docker-compose.yaml** 文件，然后再执行 **docker-compose up -d** 
