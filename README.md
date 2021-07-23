@@ -31,12 +31,31 @@ python app.py
 ### 通过 docker 安装
 
 ```sh
-docker run -e "QB_CONF=/etc/qbot/config.yaml" -v /path/to/config.yaml:/etc/qbot/config.yaml --name qbot linyuan0213/qbot:latest
+docker run -d \
+  -e "QB_CONF=/etc/qbot/config.yaml" \
+  -v /path/to/config.yaml:/etc/qbot/config.yaml \
+  --restart unless-stopped \
+  --name qbot \
+  linyuan0213/qbot:latest
 ```
 
 ### 通过 docker-compose 安装
-```sh
-git clone git@github.com:linyuan0213/qbot.git
-cd qbot
+新建**docker-compose.yaml**，添加下面命令
+```yaml
+version: '3'
+
+services:
+  qbot:
+    image: ghcr.io/linyuan0213/qbot:latest
+    container_name: qbot
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Asia/Shanghai
+      - QB_CONF=/etc/qbot/config.yaml
+    volumes:
+      - /path/to/qbot:/etc/qbot
+    restart: unless-stopped
 ```
-编辑 **docker-compose.yaml** 文件，然后再执行 **docker-compose up -d** 
+
+执行 ```docker-compose up -d```
